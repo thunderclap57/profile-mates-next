@@ -22,7 +22,7 @@ const Navbar = () => {
   const handleNavi = () => {
     setNavi(!navi);
   };
-  const handleClick = () => {};
+
   return (
     <div
       data-aos="fade-right"
@@ -218,7 +218,7 @@ const Navbar = () => {
                   />
                   <button
                     onClick={() => {
-                      router.push("/Details");
+                      router.replace("/Details");
                     }}
                     className="inline-flex items-center w-full px-10 py-3 mt-10 ml-36 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
                   >
