@@ -203,42 +203,40 @@ const Navbar = () => {
             <div className="bg-white bg-opacity-50 w-full h-full rounded drop-shadow-lg text-white">
               <h1 className="text-center text-4xl  ">LOGIN</h1>
               <div className="text-white px-5 mt-20">
-                <form method="post">
-                  <h1 className="mt-5">EMAIL OR PHONE-NO</h1>
-                  <input
-                    type="text"
-                    placeholder="Enter your Phone-No or Email"
-                    className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
-                  />
-                  <h1 className="mt-5">PASSWORD</h1>
-                  <input
-                    type="text"
-                    placeholder="Enter your Password "
-                    className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
-                  />
-                  <button
-                    onClick={() => {
-                      router.replace("/Details");
-                    }}
-                    className="inline-flex items-center w-full px-10 py-3 mt-10 ml-36 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
+                <h1 className="mt-5">EMAIL OR PHONE-NO</h1>
+                <input
+                  type="text"
+                  placeholder="Enter your Phone-No or Email"
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                />
+                <h1 className="mt-5">PASSWORD</h1>
+                <input
+                  type="text"
+                  placeholder="Enter your Password "
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                />
+                <button
+                  onClick={() => {
+                    router.replace("/Details");
+                  }}
+                  className="inline-flex items-center w-full px-10 py-3 mt-10 ml-36 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
+                >
+                  Lets Go
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    Lets Go
-                    <svg
-                      className="w-4 h-4 ml-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      ></path>
-                    </svg>
-                  </button>
-                </form>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    ></path>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
