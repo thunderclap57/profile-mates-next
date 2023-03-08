@@ -37,7 +37,7 @@ const Navbar = () => {
             src={logo}
             alt="user image"
           />
-          <h1 className="mt-5 ml-5">Gareeb </h1>
+          <h1 className="mt-5 ml-5">Gareebomn k</h1>
           <h1 className="mt-5 ml-2">MATES </h1>
         </div>
         <div className="mt-5 ">
