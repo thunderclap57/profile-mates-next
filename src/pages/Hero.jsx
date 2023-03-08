@@ -44,7 +44,7 @@ const Hero = () => {
             </svg>
           </span>
           <span className="absolute font-raleway flex items-center justify-center w-full h-full text-white text-3xl transition-all  duration-300 transform group-hover:translate-x-full ease">
-            TRY OUR BUILDER
+            Dont TRY OUR BUILDER
           </span>
           <span className="relative invisible">Button Text</span>
         </Link>
