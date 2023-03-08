@@ -113,7 +113,7 @@ const Details = () => {
           </div>
         </div>
 
-        <div class="w-36 h-36 bg-transparent rounded-full   dark:bg-gray-700"></div>
+        <div className="w-36 h-36 bg-transparent rounded-full   dark:bg-gray-700"></div>
       </div>
     </div>
   );

@@ -5,11 +5,10 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import successfull from "../../public/assets/images/successfull.json";
 const SetupPage = () => {
   const router = useRouter();
-  useEffect(() => {
-    setTimeout(() => {
-      router.replace("/TemplatePage");
-    }, 3000);
-  }, []);
+
+  setTimeout(() => {
+    router.replace("/TemplatePage");
+  }, 3000);
 
   return (
     <div className="bg-gradient-to-bl from-container-blue to-black h-screen w-full flex items-center justify-center">

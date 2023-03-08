@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const AddDetails = () => {
+  const [image, setImage] = useState();
+  const uploadImage = () => {};
   return (
     <form>
       <div className="flex flex-row ">
@@ -20,10 +22,16 @@ const AddDetails = () => {
               <div className="mb-3 w-80">
                 <label htmlFor="FileLg">Image:</label>
                 <input
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                  }}
                   className="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded-full border border-solid border-neutral-300 bg-white bg-clip-padding px-3 py-1.5 text-xl font-normal text-neutral-700 outline-none transition duration-300 ease-in-out file:-mx-3 file:-my-1.5 file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-1.5 file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[margin-inline-end:0.75rem] file:[border-inline-end-width:1px] hover:file:bg-neutral-200 focus:border-primary focus:bg-white focus:text-neutral-700 focus:shadow-[0_0_0_1px] focus:shadow-primary focus:outline-none dark:bg-transparent dark:text-neutral-200 dark:focus:bg-transparent"
                   id="FileLg"
                   type="file"
                 />
+                <button type="button" onClick={uploadImage}>
+                  Upload
+                </button>
               </div>
             </div>
           </div>
