@@ -1,8 +1,6 @@
-
 import React from "react";
 
 import { FaFileImage } from "react-icons/fa";
-
 
 const AddMoreDetails = () => {
   return (
@@ -39,7 +37,7 @@ const AddMoreDetails = () => {
               </div>
 
               <div className="flex flex-col text-black text-md font-sans mt-5 font-extrabold">
-                <label htmlFor="fname">DOB:</label>
+                <label htmlFor="fname">Skills:</label>
                 <div className="flex flex-row mt-2 gap-5">
                   <input
                     className="w-40 rounded-xl  py-4  caret-black focus:caret-red-500 "
