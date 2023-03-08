@@ -81,7 +81,7 @@ const Navbar = () => {
         </div>
         <div
           className={
-            "fixed flex flex-row ml-60 mt-24 h-[500px] w-[1000px] rounded-2xl shadow-2xl shadow-white/20 "
+            "fixed flex flex-row  h-[500px] w-[1000px] rounded-2xl shadow-2xl shadow-white/20 "
           }
         >
           <Image
@@ -190,7 +190,7 @@ const Navbar = () => {
 
         <div
           className={
-            "fixed flex flex-row ml-60 mt-24 h-[500px] w-[1000px]  shadow-2xl shadow-white/20 "
+            "fixed flex flex-row  h-[500px] w-[1000px]  shadow-2xl shadow-white/20 "
           }
         >
           <Image
