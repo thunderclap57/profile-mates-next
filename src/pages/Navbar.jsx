@@ -23,7 +23,7 @@ const Navbar = () => {
     setNavi(!navi);
   };
   const handleClick = () => {
-    router.push("/Details");
+    router.replace("/Details");
   };
   return (
     <div
