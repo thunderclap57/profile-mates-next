@@ -31,13 +31,14 @@ const TemplateComponent = () => {
 
       <Image
         data-aos="zoom-in-up"
-        className="shadow-lg  relative md:ml-10 md:w-[750px]  xl:w-[2200px] xl:ml-0 md:px-10 lg:px-20 mt-10 xl:px-10 2xl:ml-20 "
+        className="shadow-lg mx-40 relative  flex items-center justify-center"
         src={templatePic}
         alt="free"
       />
       <div
         data-aos="fade-up"
-        className="absolute  z-[90] sm:top-[250px] sm:left-[400px] xl:top-[350px] xl:left-[750px] md:top-[280px] md:left-[250px]  2xl:top-[350px] 2xl:left-[1000px] "
+        className="absolute   top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+"
       >
         <a
           href="#_"

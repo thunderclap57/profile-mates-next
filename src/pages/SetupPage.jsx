@@ -19,11 +19,11 @@ const SetupPage = () => {
           className="player"
           loop
           autoplay
-          style={{ height: "800px", width: "800px" }}
+          style={{ height: "600px", width: "600px" }}
         />
-        <h1 className="text-[100px] text-white ">
+        <h1 className="text-[50px] text-white ">
           <span className="text-white animate-ping duration-1000 transition-all">
-            Youre All
+            Youre All{" "}
           </span>
           <span className="text-green-700 animate-pulse">Set Up</span>
         </h1>

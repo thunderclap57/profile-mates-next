@@ -11,12 +11,12 @@ const PortFolioMaker = () => {
   }, []);
   return (
     <Parallax
-      className=" font-raleway text-4xl items-center text-center relative h-[100vh]"
+      className=" font-raleway text-4xl items-center text-center relative h-[100vh] flex  justify-center"
       bgImage="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHdvcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=1400&q=60"
       bgImageAlt="the cat"
       strength={800}
     >
-      <div className="flex flex-row mt-[150px] lg:mt-[300px] px-5">
+      <div className="flex flex-row   px-5">
         <div className="flex flex-col text-xl font-raleway">
           <h1
             data-aos="fade-up"
@@ -35,7 +35,7 @@ const PortFolioMaker = () => {
             free.
           </p>
         </div>
-        <div className="bg-white bg-opacity-20 backdrop-blur-lg h-[500px] hover:scale-110 rounded-xl w-[1200px] shadow-xl relative">
+        <div className="bg-white bg-opacity-20  backdrop-blur-lg h-[500px] hover:scale-110 rounded-xl w-[1200px] shadow-xl relative">
           <Image
             data-aos="flip-right"
             className="absolute   bottom-0 left-0 rounded-3xl  shadow-lg"
