@@ -203,7 +203,7 @@ const Navbar = () => {
             <div className="bg-white bg-opacity-50 w-full h-full rounded drop-shadow-lg text-white">
               <h1 className="text-center text-4xl  ">LOGIN</h1>
               <div className="text-white px-5 mt-20">
-                <form method="post" action="/">
+                <form method="post">
                   <h1 className="mt-5">EMAIL OR PHONE-NO</h1>
                   <input
                     type="text"
