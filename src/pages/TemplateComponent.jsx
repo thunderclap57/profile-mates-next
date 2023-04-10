@@ -10,34 +10,37 @@ const TemplateComponent = () => {
   }, []);
   return (
     <Parallax
-      className=" font-raleway text-4xl items-center text-center  h-[100vh] my-10 "
-      bgImage="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fHdvcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=1400&q=60"
+      className="  text-4xl items-center text-center  h-[100vh] my-10 "
+      bgImage="https://images.unsplash.com/photo-1541746590489-c4097dfb2197?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
       bgImageAlt="the cat"
       strength={800}
     >
       <h1
         data-aos="fade-up"
-        className="mt-[100px] text-white flex flex-col text-4xl text-center font-raleway"
+        className="mt-[150px] text-white flex flex-col text-4xl text-center font-bold"
       >
         WRITE YOUR PROFESSIONAL RESUME ONLINE.
       </h1>
 
       <p
         data-aos="fade-right"
-        className="text-xl justify-center text-center   text-white mt-10 font-semibold font-raleway"
+        className="text-xl justify-center text-center   text-white mt-10 font-bold "
       >
         DOWNLOAD WITH A SINGLE CLICK GET NOTICED AND LAND THAT DREAM JOB.
       </p>
 
       <Image
+        className="ml-[800px]"
+        alt="template"
         data-aos="zoom-in-up"
-        className="shadow-lg mx-40 relative  flex items-center justify-center"
-        src={templatePic}
-        alt="free"
+        src="https://cdn-images.zety.com/pages/student_resume_templates_005.jpg"
+        width={1000}
+        height={500}
+        loading="lazy"
       />
       <div
         data-aos="fade-up"
-        className="absolute   top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
 "
       >
         <a
@@ -60,7 +63,7 @@ const TemplateComponent = () => {
               ></path>
             </svg>
           </span>
-          <span className="absolute text-xl font-raleway flex items-center justify-center w-full h-full text-red-700 transition-all duration-300 transform group-hover:translate-x-full ease">
+          <span className="absolute text-xl  flex items-center justify-center w-full h-full text-red-700 transition-all duration-300 transform group-hover:translate-x-full ease">
             CHOOSE TEMPLATE
           </span>
           <span className="relative invisible">Button Text</span>

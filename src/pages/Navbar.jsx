@@ -7,11 +7,16 @@ import signupMan from "../../public/assets/images/signup_man.png";
 import login from "../../public/assets/images/login.gif";
 import React, { useState } from "react";
 import "aos/dist/aos.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+import axios from "axios";
+
 const Navbar = () => {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const [uName, setName] = useState("");
+  const [userPassword, setPassword] = useState("");
+  const [personalEmail, setEmail] = useState("");
+
   const router = useRouter();
 
   const [nav, setNav] = useState(false);
@@ -23,11 +28,52 @@ const Navbar = () => {
     setNavi(!navi);
   };
 
+  function signUp() {
+    axios
+      .post("http://localhost:3000/user/signup", {
+        email: personalEmail,
+        password: userPassword,
+        name: uName,
+      })
+      .then((response) => {
+        setPost(response.data);
+        toast.success("Success! Redirecting", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      })
+      .catch((err) => {
+        toast.error("Error" + err, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+  }
+
+  function signIn() {
+    // axios
+    //   .post("http://localhost:3000/user/login/verify", {
+    //     email: personalEmail,
+    //     password: userPassword,
+    //   })
+    //   .then((response) => {
+    //     setPost(response.data);
+    //     toast.success("Success! Redirecting", {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     });
+    //     router.replace("/WelcomeBack");
+    //   })
+    //   .catch((err) => {
+    //     toast.error("Error" + err, {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     });
+    //   });
+    router.push("/WelcomeBack");
+  }
   return (
     <div
       data-aos="fade-right"
       className=" bg-gradient-to-r from-container-blue to-blue-600  w-full  h-[80px] fixed shadow-2xl drop-shadow-2xl text-white font-bold z-[200] "
     >
+      <ToastContainer />
       <div className=" flex justify-between items-center w-full px-5">
         <div className="relative flex flex-row w-16 h-16 mt-2  object-fill">
           <Image
@@ -101,79 +147,81 @@ const Navbar = () => {
             <div className="bg-white bg-opacity-50 w-full h-full rounded drop-shadow-lg text-white">
               <h1 className="text-center text-4xl  ">SIGN UP</h1>
               <div className="text-white px-5 mt-5">
-                <form>
-                  <h1 className="mt-5">NAME</h1>
-                  <input
-                    type="text"
-                    value={name}
-                    placeholder="Enter your Name "
-                    onChange={(e) => setName(e.target.value)}
-                    className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
-                  />
-                  <h1 className="mt-5">EMAIL</h1>
-                  <input
-                    type="text"
-                    placeholder="Enter your Email"
-                    className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
-                  />
-                  <h1 className="mt-5">PASSWORD</h1>
-                  <input
-                    type="text"
-                    placeholder="Enter your Password "
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
-                  />
+                <h1 className="mt-5">NAME</h1>
+                <input
+                  type="text"
+                  value={uName}
+                  placeholder="Enter your Name "
+                  onChange={(e) => setName(e.target.value)}
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                />
+                <h1 className="mt-5">Email</h1>
+                <input
+                  type="text"
+                  placeholder="Enter your Password "
+                  value={personalEmail}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                />
 
-                  <div className="flex items-center mt-5">
-                    <input
-                      id="link-checkbox"
-                      type="checkbox"
-                      value=""
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label
-                      htmlFor="link-checkbox"
-                      className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >
-                      I agree with the
-                      <a
-                        href="#"
-                        className="text-blue-600 dark:text-blue-500 hover:underline"
-                      >
-                        terms and conditions
-                      </a>
-                      .
-                    </label>
-                  </div>
-                  <button type="submit">
+                <h1 className="mt-5">PASSWORD</h1>
+                <input
+                  type="password"
+                  placeholder="Enter your Password "
+                  value={userPassword}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                />
+
+                <div className="flex items-center mt-5">
+                  <input
+                    id="link-checkbox"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label
+                    htmlFor="link-checkbox"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    I agree with the
                     <a
-                      href="#_"
-                      className="inline-flex items-center w-full px-10 py-3 mt-10 ml-36 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
+                      href="#"
+                      className="text-blue-600 dark:text-blue-500 hover:underline"
                     >
-                      SIGN UP
-                      <svg
-                        className="w-4 h-4 ml-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        ></path>
-                      </svg>
+                      terms and conditions
                     </a>
-                  </button>
-                </form>
+                    .
+                  </label>
+                </div>
+                <button onClick={signUp}>
+                  <a
+                    href="#_"
+                    className="inline-flex items-center w-full px-10 py-3 mt-10 ml-36 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
+                  >
+                    SIGN UP
+                    <svg
+                      className="w-4 h-4 ml-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      ></path>
+                    </svg>
+                  </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       {/* login */}
       <div
         className={
@@ -197,7 +245,8 @@ const Navbar = () => {
             height={500}
             src={login}
             alt="login"
-          ></Image>
+            loading="lazy"
+          />
 
           <div className="w-full  text-black">
             <div className="bg-white bg-opacity-50 w-full h-full rounded drop-shadow-lg text-white">
@@ -206,19 +255,21 @@ const Navbar = () => {
                 <h1 className="mt-5">EMAIL OR PHONE-NO</h1>
                 <input
                   type="text"
+                  value={personalEmail}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your Phone-No or Email"
                   className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
                 />
                 <h1 className="mt-5">PASSWORD</h1>
                 <input
                   type="text"
+                  value={userPassword}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your Password "
                   className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
                 />
                 <button
-                  onClick={() => {
-                    router.replace("/WelcomeBack");
-                  }}
+                  onClick={signIn}
                   className="inline-flex items-center w-full px-10 py-3 mt-10 ml-36 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
                 >
                   Lets Go

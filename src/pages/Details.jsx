@@ -6,35 +6,53 @@ import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import AddDetails from "./AddDetails";
 import AddMoreDetails from "./AddMoreDetails";
 import { useRouter } from "next/router";
+import AddMoreDetails2 from "./AddMoreDetails2";
 
-const Details = () => {
+const Details = (props) => {
+  const [isDone1, setDone1] = useState(false);
+  const [isDone2, setDone2] = useState(false);
+  const [isDone3, setDone3] = useState(false);
   const router = useRouter();
   const handleNavigate = () => {
     router.replace("/SetupPage");
   };
   const [page, setPage] = useState(0);
-  const title = ["Enter your Details", "Enter your Details"];
+  const title = [
+    "Enter your Details",
+    "Enter your Details",
+    "Enter your Details",
+  ];
+  const handleDataFromChild1 = (data, done) => {
+    // do something with the received data from child component 1
+    console.log(data);
+    console.log(done);
+    setDone1(done);
+  };
+
+  const handleDataFromChild2 = (data, done) => {
+    // do something with the received data from child component 2
+    console.log(data);
+    setDone2(done);
+  };
+  const handleDataFromChild3 = (data, done) => {
+    // do something with the received data from child component 2
+    console.log(data);
+    setDone3(done);
+  };
   const PageDisplay = () => {
     if (page === 0) {
-      return <AddDetails />;
+      return <AddDetails onDataReceived={handleDataFromChild1} />;
     } else if (page === 1) {
-      return <AddMoreDetails />;
+      return <AddMoreDetails2 onDataReceived={handleDataFromChild2} />;
+    } else if (page === 2) {
+      return <AddMoreDetails onDataReceived={handleDataFromChild3} />;
     }
   };
+
   return (
     <div className="bg-gradient-to-bl from-purple-700 to-black h-screen w-full   ">
       <div className="bg-white bg-opacity-20 backdrop-blur-lg flex items-center justify-center  drop-shadow-lg md:h-[97vh]  mr-[100px] ml-10 relative top-2  rounded-xl ">
         <div className="flex flex-row">
-          {page === title.length - 1 && (
-            <div className="text-white my-96">
-              <AiOutlineArrowLeft
-                onClick={() => {
-                  setPage((currPage) => currPage - 1);
-                }}
-                size={35}
-              />
-            </div>
-          )}
           <div className="flex flex-col">{PageDisplay()}</div>
           <div className="my-20 mx-10">
             <div className=" md:text-2xl xl:text-4xl text-white flex-col flex">
@@ -52,6 +70,7 @@ const Details = () => {
                 src={addImg}
                 alt="add details image"
                 width={400}
+                loading="lazy"
               />
               {page === title.length - 1 && (
                 <button
@@ -74,7 +93,7 @@ const Details = () => {
                       ></path>
                     </svg>
                   </span>
-                  <span className="absolute font-raleway flex items-center justify-center w-full h-full text-white text-3xl transition-all  duration-300 transform group-hover:translate-x-full ease">
+                  <span className="absolute  flex items-center justify-center w-full h-full text-white text-3xl transition-all  duration-300 transform group-hover:translate-x-full ease">
                     <h1>Lets Go!</h1>
                   </span>
                   <span className="relative invisible">Button Text</span>
@@ -82,7 +101,8 @@ const Details = () => {
               )}
             </div>
           </div>
-          {page === 0 && (
+          {(page === 0 && isDone1 === true) ||
+          (page === 1 && isDone2 === true) ? (
             <div className="text-white my-96">
               <AiOutlineArrowRight
                 onClick={() => {
@@ -91,9 +111,9 @@ const Details = () => {
                 size={35}
               />
             </div>
-          )}
+          ) : null}
         </div>
-        <div className="absolute bottom-2 rounded-full right-5  ">
+        {/* <div className="absolute bottom-2 rounded-full right-5  ">
           <div
             className={
               page === 0
@@ -103,7 +123,7 @@ const Details = () => {
           >
             {page === 0 ? (
               <h1 className="text-2xl text-blue-200 font-extrabold animate-pulse">
-                50%
+                40%
               </h1>
             ) : (
               <h1 className="text-2xl text-green-200 font-extrabold animate-bounce">
@@ -111,8 +131,46 @@ const Details = () => {
               </h1>
             )}
           </div>
-        </div>
-
+        </div> */}
+        {(() => {
+          if (page === 0) {
+            return (
+              <div className="absolute bottom-2 rounded-full right-5  ">
+                <div
+                  className={`border-blue-600 border-l-8   w-36 h-36 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center `}
+                >
+                  <h1 className="text-2xl text-blue-200 font-extrabold animate-pulse">
+                    40%
+                  </h1>
+                </div>
+              </div>
+            );
+          } else if (page === 1) {
+            return (
+              <div className="absolute bottom-2 rounded-full right-5  ">
+                <div
+                  className={`border-yellow-600 border-t-8 border-l-8  w-36 h-36 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center `}
+                >
+                  <h1 className="text-2xl text-blue-200 font-extrabold animate-pulse">
+                    70%
+                  </h1>
+                </div>
+              </div>
+            );
+          } else {
+            return (
+              <div className="absolute bottom-2 rounded-full right-5  ">
+                <div
+                  className={`border-green-600 border-8  w-36 h-36 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center `}
+                >
+                  <h1 className="text-2xl text-blue-200 font-extrabold animate-pulse">
+                    100%
+                  </h1>
+                </div>
+              </div>
+            );
+          }
+        })()}
         <div className="w-36 h-36 bg-transparent rounded-full   dark:bg-gray-700"></div>
       </div>
     </div>

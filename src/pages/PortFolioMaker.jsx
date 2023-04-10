@@ -11,22 +11,22 @@ const PortFolioMaker = () => {
   }, []);
   return (
     <Parallax
-      className=" font-raleway text-4xl items-center text-center relative h-[100vh] flex  justify-center"
-      bgImage="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHdvcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=1400&q=60"
+      className=" text-white text-4xl items-center text-center relative h-[100vh] flex  justify-center"
+      bgImage="https://images.unsplash.com/photo-1624378515195-6bbdb73dff1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
       bgImageAlt="the cat"
       strength={800}
     >
       <div className="flex flex-row   px-5">
-        <div className="flex flex-col text-xl font-raleway">
+        <div className="flex flex-col text-xl ">
           <h1
             data-aos="fade-up"
-            className="mt-[50px]  text-2xl text-start font-bold font-raleway"
+            className="mt-[100px]  text-4xl text-start font-extrabold "
           >
             ONLINE PORTFOLIO MAKER
           </h1>
           <p
             data-aos="fade-up"
-            className="text-lg justify-center pr-[200px] text-start mt-10 font-semibold font-raleway"
+            className="text-2xl justify-center pr-[200px] text-start mt-10 font-semibold "
           >
             A good digital portfolio shines a light on your work. Profile Mate
             helps you feature your work in a professional way with beautiful,
@@ -43,6 +43,7 @@ const PortFolioMaker = () => {
             alt="free"
             height="300"
             width="300"
+            loading="lazy"
           />
           <Image
             data-aos="flip-right"
@@ -51,6 +52,7 @@ const PortFolioMaker = () => {
             alt="free"
             height="300"
             width="300"
+            loading="lazy"
           />
         </div>
       </div>

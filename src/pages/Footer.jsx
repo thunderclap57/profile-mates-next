@@ -16,6 +16,7 @@ const Footer = () => {
         </div>
         <div className="relative w-40 h-70 mt-5  object-contain">
           <Image
+            loading="lazy"
             className="rounded-full border border-gray-100 shadow-sm"
             src={logo}
             alt="user image"

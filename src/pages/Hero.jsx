@@ -11,14 +11,14 @@ const Hero = () => {
   }, []);
   return (
     <Parallax
-      className=" font-raleway text-4xl items-center text-center px-5 relative h-[100vh] "
+      className="  text-4xl items-center text-center px-5 relative h-[100vh] "
       bgImage="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTJ8fHdvcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=1400&q=60"
       bgImageAlt="the cat"
       strength={100}
     >
       <p
         data-aos="fade-up"
-        className="mt-[200px] font-thin text-4xl text-white xl:text-5xl 2xl:mt-[400px] md:text-2xl"
+        className="mt-[50px] font-thin text-4xl text-white xl:text-5xl 2xl:mt-[300px] md:text-2xl"
       >
         PROFESSIONAL RESUME & PORTFOLIO FOR ANY JOBS
       </p>
@@ -43,7 +43,7 @@ const Hero = () => {
               ></path>
             </svg>
           </span>
-          <span className="absolute font-raleway flex items-center justify-center w-full h-full text-white text-3xl transition-all  duration-300 transform group-hover:translate-x-full ease">
+          <span className="absolute  flex items-center justify-center w-full h-full text-white text-3xl transition-all  duration-300 transform group-hover:translate-x-full ease">
             TRY OUR BUILDER
           </span>
           <span className="relative invisible">Button Text</span>
