@@ -25,7 +25,7 @@ const SplashScreen = () => {
         Get Hired
       </p>
       <p className="animate-slidetext absolute 2xl:h-[200px] 2xl:top-[555px] 2xl:left-[1100px] left-[800px] top-[400px] 2xl:text-5xl text-2xl font-extrabold font-raleway text-white">
-        Don't Get Fired
+        Dont Get Fired
       </p>
     </div>
   );
