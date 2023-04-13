@@ -20,7 +20,7 @@ const SplashScreen = () => {
         height={270}
       />
 
-      <div class=" animate-slide absolute w-1 2xl:h-[200px] 2xl:top-[435px]   h-[200px] top-[300px]  bg-gray-600"></div>
+      <div className=" animate-slide absolute w-1 2xl:h-[200px] 2xl:top-[435px]   h-[200px] top-[300px]  bg-gray-600"></div>
       <p className=" animate-slidetext absolute 2xl:h-[200px] 2xl:top-[435px] 2xl:left-[1100px] 2xl:text-5xl text-2xl left-[800px] top-[350px] font-extrabold font-raleway text-white">
         Get Hired
       </p>
