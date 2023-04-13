@@ -13,7 +13,6 @@ import Facts from "./Facts";
 import Footer from "./Footer";
 import SplashScreen from "./SplashScreen";
 import { useEffect, useState } from "react";
-import UserDetails from "./UserDetails";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,7 +54,6 @@ export default function Home() {
           <HowTo />
           <Facts />
           <Footer />
-          <UserDetails />
         </>
       )}
     </>
