@@ -29,18 +29,9 @@ const TemplateComponent = () => {
         DOWNLOAD WITH A SINGLE CLICK GET NOTICED AND LAND THAT DREAM JOB.
       </p>
 
-      <Image
-        className="ml-[800px]"
-        alt="template"
-        data-aos="zoom-in-up"
-        src="https://cdn-images.zety.com/pages/student_resume_templates_005.jpg"
-        width={1000}
-        height={500}
-        loading="lazy"
-      />
       <div
         data-aos="fade-up"
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+        className="relative mt-20
 "
       >
         <a

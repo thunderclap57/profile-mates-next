@@ -54,8 +54,8 @@ const Details = (props) => {
       <div className="bg-white bg-opacity-20 backdrop-blur-lg flex items-center justify-center  drop-shadow-lg md:h-[97vh]  mr-[100px] ml-10 relative top-2  rounded-xl ">
         <div className="flex flex-row">
           <div className="flex flex-col">{PageDisplay()}</div>
-          <div className="my-20 mx-10">
-            <div className=" md:text-2xl xl:text-4xl text-white flex-col flex">
+          <div className=" mt-28 ml-5 mr-5">
+            <div className=" text-2xl text-white flex-col flex">
               <Typewriter
                 options={{
                   strings: title[page],
@@ -69,10 +69,10 @@ const Details = (props) => {
                 className="rounded-2xl  "
                 src={addImg}
                 alt="add details image"
-                width={400}
+                width={300}
                 loading="lazy"
               />
-              {page === title.length - 1 && (
+              {page === title.length - 1 && isDone3 === true && (
                 <button
                   onClick={handleNavigate}
                   className="relative mt-5 inline-flex items-center bg-white bg-opacity-20 backdrop-blur-lg justify-center  md:px-12 px-20 md:py-3 py-5 overflow-hidden   transition duration-300 ease-out   rounded-2xl shadow-md group"
@@ -135,9 +135,9 @@ const Details = (props) => {
         {(() => {
           if (page === 0) {
             return (
-              <div className="absolute bottom-2 rounded-full right-5  ">
+              <div className="absolute top-2 right-2 rounded-full  ">
                 <div
-                  className={`border-blue-600 border-l-8   w-36 h-36 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center `}
+                  className={`border-blue-600 border-l-8 ml-4  w-24 h-24 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center `}
                 >
                   <h1 className="text-2xl text-blue-200 font-extrabold animate-pulse">
                     40%
@@ -147,9 +147,9 @@ const Details = (props) => {
             );
           } else if (page === 1) {
             return (
-              <div className="absolute bottom-2 rounded-full right-5  ">
+              <div className="absolute top-2   rounded-full right-0  ">
                 <div
-                  className={`border-yellow-600 border-t-8 border-l-8  w-36 h-36 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center `}
+                  className={`border-yellow-600 border-t-8 border-l-8  w-24 h-24 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center `}
                 >
                   <h1 className="text-2xl text-blue-200 font-extrabold animate-pulse">
                     70%
@@ -159,9 +159,9 @@ const Details = (props) => {
             );
           } else {
             return (
-              <div className="absolute bottom-2 rounded-full right-5  ">
+              <div className="absolute top-2  rounded-full right-0  ">
                 <div
-                  className={`border-green-600 border-8  w-36 h-36 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center `}
+                  className={`border-green-600 border-8 ml-4  w-24 h-24 rounded-full duration-[500ms] transition-all ease-in-out  flex items-center justify-center`}
                 >
                   <h1 className="text-2xl text-blue-200 font-extrabold animate-pulse">
                     100%
@@ -171,7 +171,6 @@ const Details = (props) => {
             );
           }
         })()}
-        <div className="w-36 h-36 bg-transparent rounded-full   dark:bg-gray-700"></div>
       </div>
     </div>
   );

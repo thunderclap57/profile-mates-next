@@ -43,8 +43,8 @@ const AddDetails = (props) => {
   return (
     <form>
       <div className="flex flex-row ">
-        <div className="flex flex-col pt-12 2xl:gap-4">
-          <div className="flex flex-row mt-2">
+        <div className="flex flex-col 2xl:gap-4">
+          <div className="flex flex-row mt-5">
             <div className="flex flex-col text-white text-md font-sans ml-10 mt-5  font-extrabold">
               <label htmlFor="fname">Name:</label>
               <input
@@ -54,8 +54,8 @@ const AddDetails = (props) => {
                 name="fname"
               />
             </div>
-            {!imgUrl ? (
-              <div className="flex justify-center md:mt-8 md:ml-24 text-white">
+            {a === 0 && !imgUrl ? (
+              <div className="flex justify-center md:mt-8 md:ml-5 text-white">
                 <div className="mb-3 w-80">
                   <label htmlFor="FileLg">Image:</label>
                   <input
@@ -89,12 +89,13 @@ const AddDetails = (props) => {
           {a === 1 && loader === true && (
             <Player
               src={loading}
-              className="player"
+              className="player absolute z-2 left-[965px] top-[170px]"
               loop
               autoplay
-              style={{ height: "100px", width: "100px" }}
+              style={{ height: "200px", width: "200px" }}
             />
           )}
+
           <div className="flex flex-row mt-2">
             <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
               <label htmlFor="fname">DOB:</label>
@@ -144,7 +145,6 @@ const AddDetails = (props) => {
                 type="text"
                 id="fname"
                 name="fname"
-                
               />
             </div>
             <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
@@ -190,16 +190,16 @@ const AddDetails = (props) => {
             </div>
           </div>
           {!isDone ? (
-            <button className="ml-10" onClick={handleData}>
+            <button onClick={handleData}>
               <a
                 href="#_"
-                className="inline-flex ml-20 items-center w-full px-10 py-3 mt-10  text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
+                className="inline-flex ml-20 mt-5 items-center w-full px-10 py-3 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
               >
                 Submit
               </a>
             </button>
           ) : (
-            <p className="text-xl ml-10 text-white">
+            <p className="text-lg ml-10 mt-5 text-white">
               Details Submitted move to next page...if you want to edit the
               details you can edit it later
             </p>

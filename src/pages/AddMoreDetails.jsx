@@ -86,21 +86,21 @@ const AddMoreDetails = (props) => {
   };
   const handleData = () => {
     setdone(true);
-    sendDataToParent(education, isDone);
+    sendDataToParent(education, true);
   };
   return (
     <form>
       <div className="flex flex-row ">
-        <div className="flex flex-col pt-12 ">
+        <div className="flex flex-col ">
           <div className="flex flex-row mt-2">
-            <div className="flex text-white  text-md font-sans ml-10 mt-5  flex-col  font-extrabold">
+            <div className="flex text-white  text-md font-sans ml-5  flex-col  font-extrabold">
               <label htmlFor="fname " className="text-white">
                 Education:
               </label>
               <label>
                 Primary Institution Name:
                 <input
-                  className="w-40 text-black rounded-xl  ml-[15px] caret-black focus:caret-red-500 "
+                  className="w-40 text-black   rounded-xl py-1 ml-[15px] caret-black focus:caret-red-500 "
                   type="text"
                   name="Primary.Institution_name"
                   value={education.Primary.Institution_name}
@@ -110,7 +110,7 @@ const AddMoreDetails = (props) => {
               <label>
                 Primary Year of Pass:
                 <input
-                  className="w-70 mt-4 text-black  rounded-xl py-1 ml-[50px] caret-black focus:caret-red-500 "
+                  className="w-40 text-black   rounded-xl py-1 ml-[15px] caret-black focus:caret-red-500 "
                   type="text"
                   name="Primary.Year_of_pass"
                   value={education.Primary.Year_of_pass}
@@ -292,7 +292,7 @@ const AddMoreDetails = (props) => {
                   <button className="ml-10" onClick={handleRemoveClick}>
                     <a
                       href="#_"
-                      className="inline-flex items-center w-full px-10 py-3 mt-10  text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
+                      className="inline-flex items-center w-full px-10 py-3 mt-10 ml-16 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
                     >
                       Remove
                     </a>
@@ -302,12 +302,15 @@ const AddMoreDetails = (props) => {
             </div>
           </div>
           {!isDone ? (
-            <button className="ml-10" onClick={handleData}>
+            <button
+              className="absolute bottom-2 right-[500px]"
+              onClick={handleData}
+            >
               <a
                 href="#_"
-                className="inline-flex ml-36 items-center w-full px-10 py-3 mt-10  text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
+                className="inline-flex  ml-36 items-center w-full px-10 py-3 mt-10  text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
               >
-                send
+                Submit
               </a>
             </button>
           ) : (

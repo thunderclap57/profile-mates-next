@@ -2,6 +2,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,4 +26,20 @@ const firebaseConfig = {
 // Initialize Firebase
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 export const storage = getStorage(app);
+const provider = new GoogleAuthProvider();
+export const signInWithGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const name = result.user.displayName;
+      const email = result.user.email;
+      const profilePic = result.user.photoURL;
+      localStorage.setItem("name", name);
+      localStorage.setItem("name", email);
+      localStorage.setItem("name", profilePic);
+      console.log(result.user.uid);   })
+    .catch((error) => {
+      console.log(error);
+    });
+};

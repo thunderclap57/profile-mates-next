@@ -18,7 +18,7 @@ const Hero = () => {
     >
       <p
         data-aos="fade-up"
-        className="mt-[50px] font-thin text-4xl text-white xl:text-5xl 2xl:mt-[300px] md:text-2xl"
+        className="mt-[200px] font-thin text-4xl text-white xl:text-5xl 2xl:mt-[300px] md:text-2xl"
       >
         PROFESSIONAL RESUME & PORTFOLIO FOR ANY JOBS
       </p>

@@ -163,7 +163,7 @@ const AddMoreDetails2 = (props) => {
               href="#_"
               className="inline-flex items-center ml-36 w-full px-10 py-3 mt-10  text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
             >
-              send
+              Submit
             </a>
           </button>
         ) : (

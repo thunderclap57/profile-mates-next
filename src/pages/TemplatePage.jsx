@@ -18,8 +18,8 @@ const TemplatePage = () => {
   return (
     <div className="bg-gradient-to-br from-container-blue to-black h-screen w-full flex-col   ">
       <button className="rounded-full w-10 h-10 relative float-right hover:scale-105 shadow-2xl drop-shadow-2xl bg-white mr-5 top-2 "></button>
-      <div className=" bg-opacity-20 backdrop-blur-lg  drop-shadow-2xl h-[80vh] flex justify-center mx-20 top relative 2xl:top-16 bg-white rounded-3xl">
-        <div className=" flex items-center justify-center   drop-shadow-2xl h-20 w-[500px]   relative 2xl:top-10 bg-white rounded-3xl ">
+      <div className=" bg-opacity-20 backdrop-blur-lg  drop-shadow-2xl h-[80vh] flex justify-center mx-20 top-20 relative 2xl:top-16 bg-white rounded-3xl">
+        <div className=" flex items-center justify-center   drop-shadow-2xl h-20 w-[500px] top-10  relative 2xl:top-10 bg-white rounded-3xl ">
           <button onClick={showResumeTemplates}>
             <div className="h-[50px] w-[200px] flex items-center hover:translate-x-10  ease  transition duration-300  justify-center hover:bg-gradient-to-r from-container-blue to-purple-600 hover:text-white text-lg border-solid border-black border-2  rounded-3xl ">
               Resumes

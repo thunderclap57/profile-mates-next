@@ -8,7 +8,7 @@ const WelcomeBack = () => {
   const router = useRouter();
 
   setTimeout(() => {
-    router.replace("/Details");
+    router.replace("/TemplatePage");
   }, 4000);
 
   return (
