@@ -45,9 +45,7 @@ const SigninOtpScreen = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <div className="text-sm">
-                <Link href="/">Back</Link>
-              </div>
+              <div className="text-sm"></div>
             </div>
 
             <div>

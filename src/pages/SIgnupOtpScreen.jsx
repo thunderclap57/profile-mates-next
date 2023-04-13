@@ -48,9 +48,7 @@ const SIgnupOtpScreen = () => {
             </div>
 
             <div className="flex items-center justify-between text-white">
-              <div className="text-sm">
-                <Link href="/">Back</Link>
-              </div>
+              <div className="text-sm"></div>
             </div>
 
             <div>
