@@ -99,7 +99,7 @@ export default function Home() {
                 },
               },
               languages_known: {
-                language1: "English",
+                language1: "Englisssssssssh",
                 language2: "Hindi",
                 language3: "Spanish",
                 language4: "French",
