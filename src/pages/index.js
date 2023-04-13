@@ -27,7 +27,7 @@ export default function Home() {
       }, 3000); // change the value (in milliseconds) to adjust the time
     }
     return () => clearTimeout(timer);
-  }, []);
+  }, [showComponent]);
 
   return (
     <>
