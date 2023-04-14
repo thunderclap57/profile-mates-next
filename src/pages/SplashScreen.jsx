@@ -6,7 +6,7 @@ const SplashScreen = () => {
   return (
     <div className="h-screen bg-white w-full relative flex justify-center align-middle">
       <Image
-        className="h-[400px] w-[450px] mt-56 2xl:mt-60 "
+        className="h-[400px] w-[450px] mt-60 2xl:mt-60 "
         src={logo}
         alt="logo"
       />
