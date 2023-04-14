@@ -14,7 +14,7 @@ const SplashScreen = () => {
       />
 
       <Image
-        className=" animate-wiggle h-[140px] w-[50px]   absolute 2xl:top-[475px] 2xl:left-[850px] top-[345px] left-[667px]"
+        className=" animate-wiggle h-[140px] w-[50px]   absolute 2xl:top-[475px] 2xl:left-[850px] top-[345px] left-[650px]"
         src={tie}
         alt="logo"
         height={270}
