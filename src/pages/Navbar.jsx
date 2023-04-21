@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AiFillCloseCircle } from "react-icons/ai";
-import logo from "../../public/assets/images/logo.webp";
+import logo from "../../public/assets/images/newlogo.jpg";
 import signup from "../../public/assets/images/signup.jpeg";
 import signupMan from "../../public/assets/images/signup_man.png";
 import login from "../../public/assets/images/login.gif";
@@ -17,7 +17,7 @@ const Navbar = () => {
   const [uName, setName] = useState("");
   const [userPassword, setPassword] = useState("");
   const [personalEmail, setEmail] = useState("");
-
+  const [userIdEmail, setUserIdEmail] = useState("");
   const router = useRouter();
 
   const [nav, setNav] = useState(false);
@@ -30,24 +30,27 @@ const Navbar = () => {
   };
 
   function signUp() {
-    // axios
-    //   .post("http://localhost:3000/user/signup", {
-    //     email: personalEmail,
-    //     password: userPassword,
-    //     name: uName,
-    //   })
-    //   .then((response) => {
-    //     setPost(response.data);
-    //     toast.success("Success! Redirecting", {
-    //       position: toast.POSITION.TOP_CENTER,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     toast.error("Error" + err, {
-    //       position: toast.POSITION.TOP_CENTER,
-    //     });
-    //   });
-    router.push("/SIgnupOtpScreen");
+    axios
+      .post("https://nutty-buckle-wasp.cyclic.app/user/signup", {
+        email: personalEmail,
+        password: userPassword,
+        name: uName,
+      })
+      .then((response) => {
+        // localStorage.setItem("name", response.data);
+
+        toast.success("Success! Redirecting", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+
+        localStorage.setItem("userid", JSON.stringify(response.data.id));
+        router.push("/SIgnupOtpScreen");
+      })
+      .catch((err) => {
+        toast.error("Error" + err, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
   }
 
   function signIn() {

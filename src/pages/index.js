@@ -13,21 +13,30 @@ import Facts from "./Facts";
 import Footer from "./Footer";
 import SplashScreen from "./SplashScreen";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const router = useRouter();
   const [showComponent, setShowComponent] = useState(true);
   useEffect(() => {
     let timer;
     if (showComponent) {
       timer = setTimeout(() => {
         setShowComponent(false);
-      }, 3000); // change the value (in milliseconds) to adjust the time
+      }, 4000); // change the value (in milliseconds) to adjust the time
     }
     return () => clearTimeout(timer);
   });
-
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      localStorage.getItem("userid") !== null
+    ) {
+      router.replace("/TemplatePage");
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -39,6 +48,7 @@ export default function Home() {
           href="https://cdn-icons-png.flaticon.com/128/3135/3135731.png"
         />
       </Head>
+
       {showComponent ? (
         <SplashScreen />
       ) : (

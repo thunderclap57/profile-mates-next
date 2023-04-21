@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Player } from "@lottiefiles/react-lottie-player";
 import loading from "../../public/assets/images/loading.json";
 
-const AddDetails = (props) => {
+const EditDetails1 = (props) => {
   const [isDone, setdone] = useState(false);
   const [uploadImages, setImage] = useState();
   const [imgUrl, setImgUrl] = useState();
@@ -43,7 +43,7 @@ const AddDetails = (props) => {
   return (
     <form>
       <div className="flex flex-row ">
-        <div className="flex flex-col 2xl:gap-4">
+        <div className="flex flex-col mt-10 2xl:gap-4">
           <div className="flex flex-row">
             <div className="flex flex-col text-white text-md font-sans ml-10 mt-2  font-extrabold">
               <label htmlFor="fname">Name:</label>
@@ -189,25 +189,10 @@ const AddDetails = (props) => {
               />
             </div>
           </div>
-          {!isDone ? (
-            <button onClick={handleData}>
-              <a
-                href="#_"
-                className="inline-flex ml-20 mt-5 items-center w-full px-10 py-3 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
-              >
-                Submit
-              </a>
-            </button>
-          ) : (
-            <p className="text-lg ml-10 mt-5 text-white">
-              Details Submitted move to next page...if you want to edit the
-              details you can edit it later
-            </p>
-          )}
         </div>
       </div>
     </form>
   );
 };
 
-export default AddDetails;
+export default EditDetails1;
