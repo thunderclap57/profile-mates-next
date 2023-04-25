@@ -12,7 +12,7 @@ useEffect(()=>{
   }, 4000);
 })
  
-
+//change
   return (
     <div className="bg-gradient-to-bl from-container-blue to-white h-screen w-full flex items-center justify-center">
       <div className="flex flexx-row text-white text-[80px] justify-center items-center">
