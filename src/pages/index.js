@@ -27,16 +27,15 @@ export default function Home() {
         setShowComponent(false);
       }, 4000); // change the value (in milliseconds) to adjust the time
     }
-    return () => clearTimeout(timer);
-  });
-  useEffect(() => {
     if (
-      typeof window !== "undefined" &&
-      localStorage.getItem("userid") !== null
+
+      localStorage.getItem("userid") !== null || localStorage.getItem("userDetails") !== null
     ) {
       router.replace("/TemplatePage");
     }
-  }, []);
+    return () => clearTimeout(timer);
+  });
+
   return (
     <>
       <Head>

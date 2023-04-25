@@ -1,42 +1,33 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 
 const AddMoreDetails = (props) => {
   const [isDone, setdone] = useState(false);
-  const [references, setReferences] = useState([{ name: "", contact: "" }]);
+  const [reference, setReference] = useState([{ name: "", contact: "" }]);
   const [indexx, setIndex] = useState(0);
   const handleInputReferencesChange = (event, index) => {
     const { name, value } = event.target;
-    const list = [...references];
+    const list = [...reference];
     list[index][name] = value;
-    setReferences(list);
-    console.log(references);
+    setReference(list);
+    console.log(reference);
+  
   };
 
   const handleAddClick = () => {
-    setReferences([...references, { name: "", contact: "" }]);
+    setReference([...reference, { name: "", contact: "" }]);
     setIndex((currindex) => currindex + 1);
+
   };
 
   const handleRemoveClick = (index) => {
-    const list = [...references];
+    const list = [...reference];
     list.splice(index, 1);
-    setReferences(list);
+    setReference(list);
     setIndex((currindex) => currindex - 1);
   };
 
-  //  const handleSubmit = (event) => {
-  //    event.preventDefault();
-  //    axios
-  //      .post("/api/references", references)
-  //      .then((response) => {
-  //        console.log(response.data);
-  //      })
-  //      .catch((error) => {
-  //        console.log(error);
-  //      });
-  //  };
-  const [education, setEducation] = useState({
+  const [formData, setformData] = useState({
     Primary: {
       Institution_name: "",
       Year_of_pass: "",
@@ -57,11 +48,23 @@ const AddMoreDetails = (props) => {
       Year_of_pass: "",
       Score: "",
     },
+    languages_known: {
+      language1: "",
+      language2: "",
+      language3: "",
+      language4: "",
+    },
+     references: [
+      {
+        name: '',
+        contact: '',
+      },
+    ],
   });
   // const handleSubmit = (event) => {
   //   event.preventDefault();
   //   axios
-  //     .post("/api/education", education)
+  //     .post("/api/formData", formData)
   //     .then((response) => {
   //       console.log(response.data);
   //     })
@@ -72,30 +75,42 @@ const AddMoreDetails = (props) => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     const [eduLevel, field] = name.split(".");
-    setEducation((prevState) => ({
+
+    setformData((prevState) => ({
       ...prevState,
       [eduLevel]: {
         ...prevState[eduLevel],
         [field]: value,
       },
     }));
-    console.log(education);
+
   };
-  const sendDataToParent = (data, done) => {
-    props.onDataReceived(data, done);
+  const handleLanguageChange = (event) => {
+    const { name, value } = event.target;
+
+    const [languagesKnown, field1] = name.split(".");
+
+    setformData((prevState) => ({
+      ...prevState,
+      [languagesKnown]: {
+        ...prevState[languagesKnown],
+        [field1]: value,
+      },
+    }));
   };
+
   const handleData = () => {
-    setdone(true);
-    sendDataToParent(education, true);
+    setformData({ ...formData, references: reference })
+    props.onDataReceived(formData, true)
   };
   return (
-    <form>
+    
       <div className="flex flex-row ">
         <div className="flex flex-col ">
           <div className="flex flex-row mt-2">
             <div className="flex text-white  text-md font-sans ml-5  flex-col  font-extrabold">
               <label htmlFor="fname " className="text-white">
-                Education:
+                formData:
               </label>
               <label>
                 Primary Institution Name:
@@ -103,7 +118,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 text-black   rounded-xl py-1 ml-[15px] caret-black focus:caret-red-500 "
                   type="text"
                   name="Primary.Institution_name"
-                  value={education.Primary.Institution_name}
+                  value={formData.Primary.Institution_name}
                   onChange={handleInputChange}
                 />
               </label>
@@ -113,7 +128,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 text-black   rounded-xl py-1 ml-[15px] caret-black focus:caret-red-500 "
                   type="text"
                   name="Primary.Year_of_pass"
-                  value={education.Primary.Year_of_pass}
+                  value={formData.Primary.Year_of_pass}
                   onChange={handleInputChange}
                 />
               </label>
@@ -123,7 +138,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black rounded-xl py-1 ml-[90px] caret-black focus:caret-red-500 "
                   type="text"
                   name="Primary.Score"
-                  value={education.Primary.Score}
+                  value={formData.Primary.Score}
                   onChange={handleInputChange}
                 />
               </label>
@@ -133,7 +148,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 text-black   rounded-xl py-1 ml-[15px] caret-black focus:caret-red-500 "
                   type="text"
                   name="Higher.Institution_name"
-                  value={education.Higher.Institution_name}
+                  value={formData.Higher.Institution_name}
                   onChange={handleInputChange}
                 />
               </label>
@@ -143,7 +158,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black rounded-xl py-1 ml-[50px] caret-black focus:caret-red-500 "
                   type="text"
                   name="Higher.Year_of_pass"
-                  value={education.Higher.Year_of_pass}
+                  value={formData.Higher.Year_of_pass}
                   onChange={handleInputChange}
                 />
               </label>
@@ -153,7 +168,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black rounded-xl py-1 ml-[90px] caret-black focus:caret-red-500 "
                   type="text"
                   name="Higher.Score"
-                  value={education.Higher.Score}
+                  value={formData.Higher.Score}
                   onChange={handleInputChange}
                 />
               </label>
@@ -163,7 +178,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black  rounded-xl py-1 ml-[50px] caret-black focus:caret-red-500 "
                   type="text"
                   name="UG.Institution_name"
-                  value={education.UG.Institution_name}
+                  value={formData.UG.Institution_name}
                   onChange={handleInputChange}
                 />
               </label>
@@ -173,7 +188,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black rounded-xl py-1 ml-[50px] caret-black focus:caret-red-500 "
                   type="text"
                   name="UG.Year_of_pass"
-                  value={education.UG.Year_of_pass}
+                  value={formData.UG.Year_of_pass}
                   onChange={handleInputChange}
                 />
               </label>
@@ -183,7 +198,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black rounded-xl py-1 ml-[90px] caret-black focus:caret-red-500 "
                   type="text"
                   name="UG.Score"
-                  value={education.UG.Score}
+                  value={formData.UG.Score}
                   onChange={handleInputChange}
                 />
               </label>
@@ -193,7 +208,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black  rounded-xl py-1 ml-[50px] caret-black focus:caret-red-500 "
                   type="text"
                   name="PG.Institution_name"
-                  value={education.PG.Institution_name}
+                  value={formData.PG.Institution_name}
                   onChange={handleInputChange}
                 />
               </label>
@@ -203,7 +218,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black rounded-xl py-1 ml-[50px] caret-black focus:caret-red-500 "
                   type="text"
                   name="PG.Year_of_pass"
-                  value={education.PG.Year_of_pass}
+                  value={formData.PG.Year_of_pass}
                   onChange={handleInputChange}
                 />
               </label>
@@ -213,7 +228,7 @@ const AddMoreDetails = (props) => {
                   className="w-40 mt-4 text-black rounded-xl py-1 ml-[90px] caret-black focus:caret-red-500 "
                   type="text"
                   name="PG.Score"
-                  value={education.PG.Score}
+                  value={formData.PG.Score}
                   onChange={handleInputChange}
                 />
               </label>
@@ -225,30 +240,38 @@ const AddMoreDetails = (props) => {
               <input
                 className="w-80 rounded-xl py-4  caret-black focus:caret-red-500"
                 type="text"
-                id="fname"
-                name="fname"
+                id="language1"
+                name="languages_known.language1"
+                value={formData.languages_known.language1}
+                onChange={handleLanguageChange}
               />
               <input
                 className="w-80 rounded-xl py-4  caret-black focus:caret-red-500"
                 type="text"
-                id="fname"
-                name="fname"
+                id="language2"
+                name="languages_known.language2"
+                value={formData.languages_known.language2}
+                onChange={handleLanguageChange}
               />
               <input
                 className="w-80 rounded-xl py-4  caret-black focus:caret-red-500"
                 type="text"
-                id="fname"
-                name="fname"
+                id="language3"
+                name="languages_known.language3"
+                value={formData.languages_known.language3}
+                onChange={handleLanguageChange}
               />
               <input
                 className="w-80 rounded-xl py-4  caret-black focus:caret-red-500"
                 type="text"
-                id="fname"
-                name="fname"
+                id="language4"
+                name="languages_known.language4"
+                value={formData.languages_known.language4}
+                onChange={handleLanguageChange}
               />
               <div className="flex flex-col  text-white text-md font-sans   font-extrabold mt-5">
                 <label htmlFor="fname">References:</label>
-                {references.map((reference, index) => {
+                {reference.map((input, index) => {
                   return (
                     <div key={index} className="mt-1">
                       <label>Name:</label>
@@ -256,7 +279,7 @@ const AddMoreDetails = (props) => {
                         className="w-36 text-black rounded-xl py-2 ml-5 mr-5 caret-black focus:caret-red-500"
                         type="text"
                         name="name"
-                        value={reference.name}
+                        value={input.name}
                         onChange={(event) =>
                           handleInputReferencesChange(event, index)
                         }
@@ -268,7 +291,7 @@ const AddMoreDetails = (props) => {
                         className="w-36 text-black rounded-xl py-2 ml-5 caret-black focus:caret-red-500"
                         type="text"
                         name="contact"
-                        value={reference.contact}
+                        value={input.contact}
                         onChange={(event) =>
                           handleInputReferencesChange(event, index)
                         }
@@ -301,27 +324,23 @@ const AddMoreDetails = (props) => {
               </div>
             </div>
           </div>
-          {!isDone ? (
-            <button
-              className="absolute bottom-2 right-[500px]"
-              onClick={handleData}
-            >
-              <a
-                href="#_"
-                className="inline-flex  ml-36 items-center w-full px-10 py-3 mt-10  text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
-              >
-                Submit
-              </a>
-            </button>
-          ) : (
-            <p className="text-xl ml-10 text-white">
-              Details Submitted move to next page...if you want to edit the
-              details you can edit it later
-            </p>
-          )}
+          {!isDone && (
+            <div>
+              <button onClick={handleData}>
+                <a
+                  href="#_"
+                  className="inline-flex ml-[610px] -mt-28  items-center w-full px-10 py-3 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-black focus-within:bg-blue-700 focus-within:border-blue-700"
+                >
+                  Submit
+                </a>
+              </button>
+              <p className="text-white ml-[610px] -mt-8">Double Click to Submit</p>
+            </div>
+          ) }
+
         </div>
       </div>
-    </form>
+    
   );
 };
 

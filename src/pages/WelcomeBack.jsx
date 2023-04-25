@@ -6,10 +6,12 @@ import fireworks1 from "../../public/assets/images/fireworks1.json";
 import fireworks2 from "../../public/assets/images/fireworks2.json";
 const WelcomeBack = () => {
   const router = useRouter();
-
+useEffect(()=>{
   setTimeout(() => {
     router.replace("/TemplatePage");
   }, 4000);
+})
+ 
 
   return (
     <div className="bg-gradient-to-bl from-container-blue to-white h-screen w-full flex items-center justify-center">

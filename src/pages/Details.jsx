@@ -1,20 +1,99 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import addImg from "../../public/assets/images/add-details.jpg";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowRight, AiOutlineArrowLeft, AiOutlineLeft } from "react-icons/ai";
 import AddDetails from "./AddDetails";
 import AddMoreDetails from "./AddMoreDetails";
 import { useRouter } from "next/router";
 import AddMoreDetails2 from "./AddMoreDetails2";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-const Details = (props) => {
+const Details = () => {
+  const [parsedData,setParesedData] =useState();
+  useEffect(()=>{
+    const user = localStorage.getItem("userid");
+    setParesedData( JSON.parse(user));
+    
+  },[])
+  const [formData, setFormData] = useState( {
+    userId:'',
+    name: '',
+    email: '',
+    phone: '',
+    dob: '',
+    image: '',
+    awards: '',
+    linkedIn: '',
+    indeed: '',
+    certifications: '',
+    gitHub: '',
+    hackerRank: '',
+    skills: {
+      skill1: '',
+      skill2: '',
+      skill3: '',
+      skill4: '',
+      skill5: '',
+      skill6: '',
+    },
+    education: {
+      Primary: {
+        Institution_name: '',
+        Year_of_pass: '',
+        Score: '',
+      },
+      Higher: {
+        Institution_name: '',
+        Year_of_pass: '',
+        Score: '',
+      },
+      UG: {
+        Institution_name: '',
+        Year_of_pass: '',
+        Score: '',
+      },
+      PG: {
+        Institution_name: '',
+        Year_of_pass: '',
+        Score: '',
+      },
+    },
+    languages_known: {
+      language1: '',
+      language2: '',
+      language3: '',
+      language4: '',
+    },
+    references: [
+      {
+        name: '',
+        contact: '',
+      },
+    ],
+    projects: [
+      {
+        name: '',
+      },
+    ],
+  }
+  );
+  useEffect(() => {
+    if (parsedData) {
+      setFormData((prevState) => ({
+        ...prevState,
+        userId: parsedData,
+      }));
+    }
+  }, [parsedData]);
+  
   const [isDone1, setDone1] = useState(false);
   const [isDone2, setDone2] = useState(false);
   const [isDone3, setDone3] = useState(false);
   const router = useRouter();
   const handleNavigate = () => {
-    router.replace("/SetupPage");
+    addDetails()
   };
   const [page, setPage] = useState(0);
   const title = [
@@ -22,23 +101,67 @@ const Details = (props) => {
     "Enter your Details",
     "Enter your Details",
   ];
-  const handleDataFromChild1 = (data, done) => {
-    // do something with the received data from child component 1
-    console.log(data);
-    console.log(done);
-    setDone1(done);
-  };
+  const handleDataFromChild1 = (data,done) => {
+ 
+    setFormData(prevState => ({
+      ...prevState,
+      ...data
+    }));
 
+
+    console.log(formData)
+    setDone1(done);
+   
+  };
+  
   const handleDataFromChild2 = (data, done) => {
-    // do something with the received data from child component 2
-    console.log(data);
+    setFormData(prevState => ({
+      ...prevState,
+      ...data
+    }));
+
+    console.log(formData)
     setDone2(done);
   };
+  
   const handleDataFromChild3 = (data, done) => {
-    // do something with the received data from child component 2
-    console.log(data);
+    setFormData(prevState => ({
+      ...prevState,
+      ...data
+    }));
+
+    console.log(formData)
     setDone3(done);
   };
+  
+  function addDetails() {
+
+
+  axios
+    .post("https://nutty-buckle-wasp.cyclic.app/user/addDetails",formData)
+    .then((response) => {
+      toast.success("Success! Redirecting", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+
+      router.replace("/SetupPage");
+    })
+    .catch((err) => {
+      console.log(err);
+      toast.error("Error" + err, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    });
+ 
+  
+  }
+
+  
+  
+  
+  
+  
+  
   const PageDisplay = () => {
     if (page === 0) {
       return <AddDetails onDataReceived={handleDataFromChild1} />;
@@ -53,6 +176,16 @@ const Details = (props) => {
     <div className="bg-gradient-to-bl from-purple-700 to-black h-screen w-full   ">
       <div className="bg-white bg-opacity-20 backdrop-blur-lg flex items-center justify-center  drop-shadow-lg md:h-[97vh]  mr-[100px] ml-10 relative top-2  rounded-xl ">
         <div className="flex flex-row">
+      { page === 1  ? (
+            <div className="text-white my-96">
+              <AiOutlineArrowLeft
+                onClick={() => {
+                  setPage((currPage) => currPage + 1);
+                }}
+                size={35}
+              />
+            </div>
+          ) : null}
           <div className="flex flex-col">{PageDisplay()}</div>
           <div className=" mt-28 ml-5 mr-5">
             <div className=" text-2xl text-white flex-col flex">
@@ -65,6 +198,7 @@ const Details = (props) => {
                 }}
               />
 
+   
               <Image
                 className="rounded-2xl  "
                 src={addImg}

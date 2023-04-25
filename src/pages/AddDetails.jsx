@@ -8,11 +8,31 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import loading from "../../public/assets/images/loading.json";
 
 const AddDetails = (props) => {
-  const [isDone, setdone] = useState(false);
+
   const [uploadImages, setImage] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [loader, setLoader] = useState(true);
   const [a, setA] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    dob: '',
+    image: '',
+    awards: '',
+    linkedIn: '',
+    indeed: '',
+    certifications: '',
+    gitHub: '',
+    hackerRank: '',
+    image: null,
+  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+    console.log(formData)
+  };
+
   const uploadImage = () => {
     setA(1);
     if (!uploadImages) {
@@ -27,35 +47,44 @@ const AddDetails = (props) => {
         console.log(url);
         setImgUrl(url);
         setLoader(false);
-        console.log(imgUrl);
+        console.log(typeof url);
+        
+        setFormData({ ...formData, image: url })
       });
     });
-  };
-  const sendDataToParent = (data, done) => {
-    console.log(done);
-    props.onDataReceived(data, done);
-  };
-  const handleData = () => {
-    setdone(true);
 
-    sendDataToParent(imgUrl, true);
+  };
+
+
+  const handleData = () => {
+
+    // if (formData.name == "" || formData.dob == "" || formData.email == "" || formData.phone == "" || formData.awards == "" || formData.linkedIn == "" || formData.Github == "" || formData.indeed == "" || formData.certifications == "" || formData.hackerrank == "") {
+    //   alert("Fill in all the Details");
+    // } else {
+
+    //   props.onDataReceived(formData, true);
+
+    // }
+    props.onDataReceived(formData, true);
   };
   return (
-    <form>
-      <div className="flex flex-row ">
+    
+      <div className="flex flex-row text-black">
         <div className="flex flex-col 2xl:gap-4">
           <div className="flex flex-row">
-            <div className="flex flex-col text-white text-md font-sans ml-10 mt-2  font-extrabold">
-              <label htmlFor="fname">Name:</label>
+            <div className="flex flex-col text-black text-md font-sans ml-10 mt-20  font-extrabold">
+              <label htmlFor="name " className="text-white">Name:</label>
               <input
                 className="w-96 rounded-xl py-4  caret-black focus:caret-red-500"
                 type="text"
-                id="fname"
-                name="fname"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
               />
             </div>
-            {a === 0 && !imgUrl ? (
-              <div className="flex justify-center md:mt-4 md:ml-5 text-white">
+            {a == 0 && !imgUrl ? (
+              <div className="flex justify-center md:mt-20 md:ml-5 text-black">
                 <div className="mb-3 w-80">
                   <label htmlFor="FileLg">Image:</label>
                   <input
@@ -68,7 +97,7 @@ const AddDetails = (props) => {
                   />
                 </div>
                 <button
-                  className="bg-blue-700 w-20 rounded-sm h-10 mt-6 ml-5"
+                  className="bg-blue-700 w-20 rounded-sm h-10 mt-6 ml-5 text-white"
                   type="button"
                   onClick={uploadImage}
                 >
@@ -86,7 +115,7 @@ const AddDetails = (props) => {
               />
             )}
           </div>
-          {a === 1 && loader === true && (
+          {a == 1 && loader == true && (
             <Player
               src={loading}
               className="player absolute z-2 left-[965px] top-[170px]"
@@ -97,116 +126,131 @@ const AddDetails = (props) => {
           )}
 
           <div className="flex flex-row mt-2">
-            <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
-              <label htmlFor="fname">DOB:</label>
+            <div className="flex flex-col text-black text-md font-sans ml-10  font-extrabold">
+              <label htmlFor="dob" className="text-white">DOB:</label>
               <input
                 className="w-60 rounded-xl mt-4 py-4  caret-black focus:caret-red-500 "
                 type="text"
-                id="fname"
-                name="fname"
+                id="dob"
+                name="dob"
+                value={formData.dob}
+                onChange={handleInputChange}
               />
             </div>
-            <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
-              <label htmlFor="fname">Phone No:</label>
+            <div className="flex flex-col text-black text-md font-sans ml-10  font-extrabold">
+              <label htmlFor="phone" className="text-white">Phone No:</label>
               <input
                 className="w-96 rounded-xl mt-4 py-4 caret-black focus:caret-red-500"
                 type="tel"
-                id="fname"
-                name="fname"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
               />
             </div>
           </div>
           <div className="flex flex-row mt-2">
-            <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold mt-2">
-              <label htmlFor="fname">Email:</label>
+            <div className="flex flex-col text-black text-md font-sans ml-10  font-extrabold mt-2">
+              <label htmlFor="email" className="text-white">Email:</label>
 
               <input
                 className="w-96 rounded-xl mt-4 py-4  caret-black focus:caret-red-500 "
-                type="text"
-                id="fname"
-                name="fname"
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
               />
             </div>
-            <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
-              <label htmlFor="fname">Awards:</label>
+            <div className="flex flex-col text-black text-md font-sans ml-10  font-extrabold">
+              <label htmlFor="awards" className="text-white">Awards:</label>
               <input
                 className="w-96 rounded-xl mt-4 py-4  caret-black focus:caret-red-500 "
                 type="text"
-                id="fname"
-                name="fname"
+                id="awards"
+                name="awards"
+                value={formData.awards}
+                onChange={handleInputChange}
               />
             </div>
           </div>
           <div className="flex flex-row">
-            <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
-              <label htmlFor="fname">Linked In:</label>
+            <div className="flex flex-col text-black text-md font-sans ml-10  font-extrabold">
+              <label htmlFor="linkedIn" className="text-white">Linked In:</label>
               <input
                 className="w-96 rounded-xl mt-4 py-4  caret-black focus:caret-red-500 "
                 type="text"
-                id="fname"
-                name="fname"
+                id="linkedIn"
+                name="linkedIn"
+                value={formData.linkedIn}
+                onChange={handleInputChange}
               />
             </div>
-            <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
-              <label htmlFor="fname">Indeed:</label>
+            <div className="flex flex-col text-black text-md font-sans ml-10  font-extrabold">
+              <label htmlFor="indeed" className="text-white">Indeed:</label>
               <input
                 className="w-96 rounded-xl mt-4 py-4 caret-black focus:caret-red-500"
-                type="tel"
-                id="fname"
-                name="fname"
+                type="text"
+                id="indeed"
+                name="indeed"
+                value={formData.indeed}
+                onChange={handleInputChange}
               />
             </div>
           </div>
-          <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
-            <label htmlFor="fname">Certifications:</label>
-            <h1 className="text-sm">
+
+          <div className="flex flex-row mt-2 ">
+            <div className="flex flex-col text-black text-md font-sans ml-10  font-extrabold">
+              <label htmlFor="Github" className="text-white">GitHub:</label>
+              <input
+                className="w-96 rounded-xl mt-4 py-4  caret-black focus:caret-red-500 "
+                type="text"
+                id="gitHub"
+                name="gitHub"
+                value={formData.gitHub}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="flex flex-col text-black text-md font-sans ml-10  font-extrabold">
+              <label htmlFor="hackerrank" className="text-white">Hacker Rank Score:</label>
+              <input
+                className="w-96 rounded-xl mt-4 py-4 caret-black focus:caret-red-500"
+                type="text"
+                id="hackerRank"
+                name="hackerRank"
+                value={formData.hackerRank}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="flex flex-col text-black text-md font-sans ml-10   font-extrabold">
+            <label htmlFor="certifications" className="text-white">Certifications:</label>
+            <h1 className="text-sm text-white">
               *Add a drive link which includes your Certificates
             </h1>
             <input
               className="w-96 rounded-xl mt-4 py-4  caret-black focus:caret-red-500 "
               type="text"
-              id="fname"
-              name="fname"
+              id="certifications"
+              name="certifications"
+              value={formData.certifications}
+              onChange={handleInputChange}
             />
           </div>
-          <div className="flex flex-row mt-2 ">
-            <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
-              <label htmlFor="fname">GitHub:</label>
-              <input
-                className="w-96 rounded-xl mt-4 py-4  caret-black focus:caret-red-500 "
-                type="text"
-                id="fname"
-                name="fname"
-              />
-            </div>
-            <div className="flex flex-col text-white text-md font-sans ml-10  font-extrabold">
-              <label htmlFor="fname">Hacker Rank:</label>
-              <input
-                className="w-96 rounded-xl mt-4 py-4 caret-black focus:caret-red-500"
-                type="tel"
-                id="fname"
-                name="fname"
-              />
-            </div>
-          </div>
-          {!isDone ? (
-            <button onClick={handleData}>
-              <a
-                href="#_"
-                className="inline-flex ml-20 mt-5 items-center w-full px-10 py-3 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"
-              >
-                Submit
-              </a>
-            </button>
-          ) : (
-            <p className="text-lg ml-10 mt-5 text-white">
-              Details Submitted move to next page...if you want to edit the
-              details you can edit it later
-            </p>
-          )}
+
+          <button onClick={handleData}>
+            <a
+              href="#_"
+              className="inline-flex ml-80 -mt-20  items-center w-full px-10 py-3 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-black focus-within:bg-blue-700 focus-within:border-blue-700"
+            >
+              Submit
+            </a>
+          </button>
+          <p className="text-white ml-[510px]">Double Click to Submit</p>
         </div>
+
       </div>
-    </form>
+    
   );
 };
 

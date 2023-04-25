@@ -3,12 +3,15 @@ import React, { useEffect } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 
 import successfull from "../../public/assets/images/successfull.json";
+import axios from "axios";
+import { toast } from "react-toastify";
 const SetupPage = () => {
   const router = useRouter();
-
-  setTimeout(() => {
-    router.replace("/TemplatePage");
-  }, 3000);
+  useEffect(()=>{
+    setTimeout(() => {
+      router.replace("/TemplatePage");
+    }, 4000);
+  })
 
   return (
     <div className="bg-gradient-to-bl from-container-blue to-black h-screen w-full flex items-center justify-center">

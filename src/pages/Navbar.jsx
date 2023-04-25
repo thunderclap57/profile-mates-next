@@ -54,24 +54,32 @@ const Navbar = () => {
   }
 
   function signIn() {
-    // axios
-    //   .post("http://localhost:3000/user/login/verify", {
-    //     email: personalEmail,
-    //     password: userPassword,
-    //   })
-    //   .then((response) => {
-    //     setPost(response.data);
-    //     toast.success("Success! Redirecting", {
-    //       position: toast.POSITION.TOP_CENTER,
-    //     });
-    //     router.replace("/WelcomeBack");
-    //   })
-    //   .catch((err) => {
-    //     toast.error("Error" + err, {
-    //       position: toast.POSITION.TOP_CENTER,
-    //     });
-    //   });
-    router.push("/SigninOtpScreen");
+    const user = localStorage.getItem("userid");
+    const parsedData = JSON.parse(user);
+    axios
+      .post("https://nutty-buckle-wasp.cyclic.app/user/login", {
+        userId:parsedData,
+        email: personalEmail,
+        password: userPassword,
+      })
+      .then((response) => {
+        console.log(response)
+        console.log(response.data)
+        
+        localStorage.setItem("userDetails", JSON.stringify(response.data));
+        toast.success("Success! Redirecting", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        router.push("/TemplatePage");
+
+      })
+      .catch((err) => {
+        toast.error("Error" + err, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+
+
   }
   return (
     <div
@@ -158,7 +166,7 @@ const Navbar = () => {
                   value={uName}
                   placeholder="Enter your Name "
                   onChange={(e) => setName(e.target.value)}
-                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg text-black "
                 />
                 <h1 className="mt-5">Email</h1>
                 <input
@@ -166,7 +174,7 @@ const Navbar = () => {
                   placeholder="Enter your Password "
                   value={personalEmail}
                   onChange={(e) => setEmail(e.target.value)}
-                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg text-black "
                 />
 
                 <h1 className="mt-5">PASSWORD</h1>
@@ -175,30 +183,10 @@ const Navbar = () => {
                   placeholder="Enter your Password "
                   value={userPassword}
                   onChange={(e) => setPassword(e.target.value)}
-                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg text-black"
                 />
 
-                <div className="flex items-center mt-5">
-                  <input
-                    id="link-checkbox"
-                    type="checkbox"
-                    value=""
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="link-checkbox"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    I agree with the
-                    <a
-                      href="#"
-                      className="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      terms and conditions
-                    </a>
-                    .
-                  </label>
-                </div>
+                
                 <button onClick={signUp}>
                   <a
                     href="#_"
@@ -257,22 +245,23 @@ const Navbar = () => {
             <div className="bg-white bg-opacity-50 w-full h-full rounded drop-shadow-lg text-white">
               <h1 className="text-center text-4xl  ">LOGIN</h1>
               <div className="text-white px-5 mt-20">
-                <h1 className="mt-5">EMAIL OR PHONE-NO</h1>
+                <h1 className="mt-5">EMAIL</h1>
                 <input
                   type="text"
                   value={personalEmail}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your Phone-No or Email"
-                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg text-black "
                 />
                 <h1 className="mt-5">PASSWORD</h1>
-                <input
-                  type="text"
+               
+                 <input
+                  type="password"
                   value={userPassword}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your Password "
-                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg "
-                />
+                  className=" border-white bg-white bg-opacity-50 w-full h-10  drop-shadow-lg text-black "
+                /> 
                 <button
                   onClick={signIn}
                   className="inline-flex items-center w-full px-10 py-3 mt-10 ml-36 text-base font-semibold text-white no-underline align-middle bg-blue-600 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-blue-700 hover:border-blue-700 hover:text-white focus-within:bg-blue-700 focus-within:border-blue-700"

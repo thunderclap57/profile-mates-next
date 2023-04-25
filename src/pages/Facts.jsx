@@ -8,7 +8,7 @@ const Facts = () => {
   return (
     <div
       id="aboutus"
-      className="   relative h-[100vh] bg-gradient-to-b px-10 from-white   to-white"
+      className="relative h-[100vh] bg-gradient-to-b px-10 from-white   to-white"
     >
       <h1 data-aos="fade-up" className="flex text-4xl ">
         Some facts about PortFolioMaker
